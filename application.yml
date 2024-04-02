@@ -17,7 +17,7 @@ proxy:
       groups: mathematicians
   specs:
     - id: shiny-renv-demo
-      display-name: Shiny with renv Demo Application
+      display-name: Shiny using with renv Demo Application
       container-image: openanalytics/shinyproxy-shiny-renv-demo
 
 logging:

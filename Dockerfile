@@ -1,19 +1,35 @@
 FROM openanalytics/r-ver:4.3.2
 
-RUN apt-get update 
+COPY Rprofile.site /usr/local/lib/R/etc/
 
-# copy necessary files
-## app folder
-COPY /shinyApp ./app
-## renv.lock file
-COPY /shinyApp/renv.lock ./renv.lock
+# system libraries of general use
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    pandoc \
+    pandoc-citeproc \
+    libcairo2-dev \
+    libxt-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# install renv & restore packages
-RUN R -q -e "install.packages(c('shiny', 'renv'))"
-RUN R -q -e 'renv::restore()'
+# system library dependency for the euler app
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    libmpfr-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# expose port
+# pin renv version
+ENV RENV_VERSION 1.0.5
+RUN R -q -e "options(warn=2); install.packages('remotes')"
+RUN R -q -e "options(warn=2); remotes::install_version('renv', '${RENV_VERSION}')"
+
+# install R dependencies
+# do this before copying the app-code, to ensure this layer is cached
+WORKDIR /build
+COPY euler/renv.lock /build/renv.lock
+RUN R -q -e 'options(warn=2); renv::restore()'
+
+# install R code
+COPY euler /build/euler
+RUN R CMD INSTALL /build/euler
+
 EXPOSE 3838
 
-# run app on container start
-CMD ["R", "-e", "shiny::runApp('/app', host = '0.0.0.0', port = 3838)"]
+CMD ["R", "-q", "-e", "euler::runShiny()"]
