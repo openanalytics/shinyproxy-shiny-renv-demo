@@ -8,6 +8,8 @@ Related demos:
 
 - [plain Shiny demo](https://github.com/openanalytics/shinyproxy-demo)
 - [plain Shiny demo (no R package)](https://github.com/openanalytics/shinyproxy-demo-minimal)
+- [Shiny demo using pak](https://github.com/openanalytics/shinyproxy-shiny-pak-demo)
+- [Shiny demo using r2u](https://github.com/openanalytics/shinyproxy-shiny-r2u-demo)
 
 # Build the Docker image
 
@@ -36,5 +38,9 @@ specs:
     container-image: openanalytics/shinyproxy-shiny-renv-demo
 ```
 
+# References
+
+- [ShinyProxy.io](https://shinyproxy.io/)
+- [All demos](https://shinyproxy.io/documentation/demos/)
 
 **(c) Copyright Open Analytics NV, 2024.**

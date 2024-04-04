@@ -1,6 +1,7 @@
-FROM openanalytics/r-ver:4.3.2
+FROM openanalytics/r-ver:4.3.3
 
-COPY Rprofile.site /usr/local/lib/R/etc/
+RUN /rocker_scripts/setup_R.sh https://packagemanager.posit.co/cran/__linux__/jammy/latest
+RUN echo "\noptions(shiny.port=3838, shiny.host='0.0.0.0')" >> /usr/local/lib/R/etc/Rprofile.site
 
 # system libraries of general use
 RUN apt-get update && apt-get install --no-install-recommends -y \
