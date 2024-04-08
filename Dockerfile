@@ -33,4 +33,7 @@ RUN R CMD INSTALL /build/euler
 
 EXPOSE 3838
 
+RUN groupadd -g 1000 shiny && useradd -c 'shiny' -u 1000 -g 1000 -m -d /home/shiny -s /sbin/nologin shiny
+USER shiny
+
 CMD ["R", "-q", "-e", "euler::runShiny()"]
