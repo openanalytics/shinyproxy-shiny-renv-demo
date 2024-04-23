@@ -6,8 +6,8 @@ ShinyProxy.
 
 Related demos:
 
-- [plain Shiny demo](https://github.com/openanalytics/shinyproxy-demo)
-- [plain Shiny demo (no R package)](https://github.com/openanalytics/shinyproxy-demo-minimal)
+- [plain Shiny demo](https://github.com/openanalytics/shinyproxy-shiny-demo)
+- [plain Shiny demo (no R package)](https://github.com/openanalytics/shinyproxy-shiny-demo-minimal)
 - [Shiny demo using pak](https://github.com/openanalytics/shinyproxy-shiny-pak-demo)
 - [Shiny demo using r2u](https://github.com/openanalytics/shinyproxy-shiny-r2u-demo)
 
@@ -38,7 +38,7 @@ specs:
     container-image: openanalytics/shinyproxy-shiny-renv-demo
 ```
 
-# References
+## References
 
 - [ShinyProxy.io](https://shinyproxy.io/)
 - [All demos](https://shinyproxy.io/documentation/demos/)
