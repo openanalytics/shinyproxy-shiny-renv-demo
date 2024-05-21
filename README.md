@@ -32,10 +32,11 @@ sudo docker build -t openanalytics/shinyproxy-shiny-renv-demo .
 To add the shiny application to ShinyProxy, add the following lines to its configuration file (see [application.yml](./application.yml) for a complete file):
 
 ```yaml
-specs:
-  - id: shiny-with-renv
-    display-name: Shiny using renv Demo Application
-    container-image: openanalytics/shinyproxy-shiny-renv-demo
+proxy:
+  specs:
+    - id: shiny-with-renv
+      display-name: Shiny using renv Demo Application
+      container-image: openanalytics/shinyproxy-shiny-renv-demo
 ```
 
 ## References
